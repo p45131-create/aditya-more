@@ -3,7 +3,10 @@ import pickle
 import numpy as np
 
 # Load the saved model
-model = pickle.load(open('linear_reg.sav', 'rb'))
+import pickle
+
+with open("linear_reg.sav", "rb") as f:
+    model = pickle.load(f)
 
 st.title('Sales Prediction App')
 
@@ -17,3 +20,4 @@ if st.button('Predict Sales'):
     input_data = np.array([[TV, Radio, Newspaper]])
     prediction = model.predict(input_data)[0]
     st.success(f'Predicted Sales: {prediction:.2f}')
+
